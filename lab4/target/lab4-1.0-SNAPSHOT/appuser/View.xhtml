@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAppuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAppuserLabel_id}"/>
+                    <h:outputText value="#{appuserController.selected.id}" title="#{bundle.ViewAppuserTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAppuserLabel_userid}"/>
+                    <h:outputText value="#{appuserController.selected.userid}" title="#{bundle.ViewAppuserTitle_userid}"/>
+                    <h:outputText value="#{bundle.ViewAppuserLabel_password}"/>
+                    <h:outputText value="#{appuserController.selected.password}" title="#{bundle.ViewAppuserTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewAppuserLabel_groupname}"/>
+                    <h:outputText value="#{appuserController.selected.groupname}" title="#{bundle.ViewAppuserTitle_groupname}"/>
+                    <h:outputText value="#{bundle.ViewAppuserLabel_birthday}"/>
+                    <h:outputText value="#{appuserController.selected.birthday}" title="#{bundle.ViewAppuserTitle_birthday}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAppuserLabel_mobilephone}"/>
+                    <h:outputText value="#{appuserController.selected.mobilephone}" title="#{bundle.ViewAppuserTitle_mobilephone}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{appuserController.destroyAndView}" value="#{bundle.ViewAppuserDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAppuserEditLink}"/>
+                <br />
+                <h:commandLink action="#{appuserController.prepareCreate}" value="#{bundle.ViewAppuserCreateLink}" />
+                <br />
+                <h:commandLink action="#{appuserController.prepareList}" value="#{bundle.ViewAppuserShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAppuserIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

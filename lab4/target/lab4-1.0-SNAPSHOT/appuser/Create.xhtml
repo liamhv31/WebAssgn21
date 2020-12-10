@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAppuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <table columns="2">
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateAppuserLabel_userid}" for="userid" /></td>
+                        <td><h:inputText id="userid" value="#{appuserController.selected.userid}" title="#{bundle.CreateAppuserTitle_userid}" required="true" requiredMessage="#{bundle.CreateAppuserRequiredMessage_userid}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateAppuserLabel_password}" for="password" /></td>
+                        <td><h:inputText id="password" value="#{appuserController.selected.password}" title="#{bundle.CreateAppuserTitle_password}" required="true" requiredMessage="#{bundle.CreateAppuserRequiredMessage_password}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateAppuserLabel_groupname}" for="groupname" /></td>
+                        <td><h:inputText id="groupname" value="#{appuserController.selected.groupname}" title="#{bundle.CreateAppuserTitle_groupname}" required="true" requiredMessage="#{bundle.CreateAppuserRequiredMessage_groupname}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateAppuserLabel_birthday}" for="birthday" /></td>
+                        <td><h:inputText id="birthday" value="#{appuserController.selected.birthday}" title="#{bundle.CreateAppuserTitle_birthday}" ><f:convertDateTime pattern="MM/dd/yyyy" /></h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateAppuserLabel_mobilephone}" for="mobilephone" /></td>
+                        <td><h:inputText id="mobilephone" value="#{appuserController.selected.mobilephone}" title="#{bundle.CreateAppuserTitle_mobilephone}" /></td>
+                    </tr>
+                </table>
+                <br />
+                <h:commandLink action="#{appuserController.create}" value="#{bundle.CreateAppuserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{appuserController.prepareList}" value="#{bundle.CreateAppuserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAppuserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

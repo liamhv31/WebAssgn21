@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSpriteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+            <!--Table form to display output labels and input text fields-->
+                <table columns="3">
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_panelWidth}" for="panelWidth" /></td>
+                        <td><h:inputText id="panelWidth" value="#{spriteController.selected.panelWidth}" title="#{bundle.CreateSpriteTitle_panelWidth}"> <f:validateLongRange minimum="0" /> </h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_panelHeight}" for="panelHeight" /></td>
+                        <td><h:inputText id="panelHeight" value="#{spriteController.selected.panelHeight}" title="#{bundle.CreateSpriteTitle_panelHeight}"> <f:validateLongRange minimum="0" /> </h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_x}" for="x" /></td>
+                        <td><h:inputText id="x" value="#{spriteController.selected.x}" title="#{bundle.CreateSpriteTitle_x}"> <f:validateLongRange minimum="0" /> </h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_y}" for="y" /></td>
+                        <td><h:inputText id="y" value="#{spriteController.selected.y}" title="#{bundle.CreateSpriteTitle_y}"> <f:validateLongRange minimum="0" /> </h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_dx}" for="dx" /></td>
+                        <td><h:inputText id="dx" value="#{spriteController.selected.dx}" title="#{bundle.CreateSpriteTitle_dx}" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_dy}" for="dy" /></td>
+                        <td><h:inputText id="dy" value="#{spriteController.selected.dy}" title="#{bundle.CreateSpriteTitle_dy}" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="#{bundle.CreateSpriteLabel_color}" for="color" /></td>
+                        <td><h:inputText id="color" value="#{spriteController.selected.color}" title="#{bundle.CreateSpriteTitle_color}"> <f:converter converterId="ccno" /></h:inputText></td>
+                    </tr>
+                </table>
+                <br />
+                <h:commandLink action="#{spriteController.create}" value="#{bundle.CreateSpriteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{spriteController.prepareList}" value="#{bundle.CreateSpriteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSpriteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
